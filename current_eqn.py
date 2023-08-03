@@ -2,7 +2,16 @@ import numpy as np
 from parameters import *
 
 
-def error_eqn_A5(phis_rad, phi_rad, alpha, Phi_ext_Phi0, epsilon_J):
-    error_A5 = alpha * np.sin(phis_rad) + np.sin((phis_rad - 2 * np.pi * Phi_ext_Phi0) / 3) + epsilon_J * (
-            M * phis_rad - phi_rad)
-    return error_A5
+def residueI_eqnA5(phis_rad, phi_rad, alpha, Phi_ext_Phi0, epsilon_J):
+    """this reflects current conservation
+    phis is phase across snail
+    phi is phase across capacitor
+    convention is current through M snails (each phis) and inductor (not free) share same direction
+    capacitance is against them (phi)
+    phiL = - M phis - phi
+    """
+    curr_alpha = alpha * np.sin(phis_rad)
+    curr_unitaries = np.sin((phis_rad - 2 * np.pi * Phi_ext_Phi0) / 3)
+    curr_snail = curr_unitaries + curr_alpha
+    curr_inductor = phi_rad - M * phis_rad
+    return curr_snail - curr_inductor  # should be zero
