@@ -11,7 +11,7 @@ w_cavity = 2 * np.pi * 13e9
 C_cavity = 9e-13  # obtained from an approximate expression for C=epsilon0*pi*R0^2/d for reentrant cavity
 L_cavity = 1 / (w_cavity ** 2 * C_cavity)
 EL = 4 * np.pi ** 2 * phi0 ** 2 / L_cavity  # is it right?
-# common
+# Common
 Xi_J = LJ / L_cavity
 Phi_ext_Phi0 = 2 * np.pi * 0.25  # np.linspace(0, 0.5, 100)
 
@@ -22,7 +22,7 @@ freq_Hz = np.array([[fb_Hz, 0, 0], [0, fd_Hz, 0], [0, 0, fc_Hz]])
 w_radHz = 2 * np.pi * freq_Hz
 const = np.sqrt(hbar / (2 * EJ_Hz * h))
 
-# ZPFs
+# ZPFs (these values may change)
 phi_d1, phi_b1, phi_c2 = 0.3704, 0.4143, 0.0186
 
 ###########################################################
