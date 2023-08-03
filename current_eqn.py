@@ -2,7 +2,7 @@ import numpy as np
 from parameters import *
 
 
-def residueI_eqnA5(phis_rad, phi_rad, alpha, Phi_ext_Phi0, epsilon_J):
+def residueI_eqnA5(phis_rad, phi_rad, alpha, Phi_ext_Phi0):
     """this reflects current conservation
     phis is phase across snail
     phi is phase across capacitor
@@ -13,5 +13,5 @@ def residueI_eqnA5(phis_rad, phi_rad, alpha, Phi_ext_Phi0, epsilon_J):
     curr_alpha = alpha * np.sin(phis_rad)
     curr_unitaries = np.sin((phis_rad - 2 * np.pi * Phi_ext_Phi0) / 3)
     curr_snail = curr_unitaries + curr_alpha
-    curr_inductor = Xi_J*(phi_rad - M * phis_rad)
+    curr_inductor = Xi_J * (phi_rad - M * phis_rad)
     return curr_snail - curr_inductor  # should be zero
