@@ -14,7 +14,7 @@ EL = 4 * np.pi ** 2 * phi0 ** 2 / L_cavity  # is it right?
 # Common
 Xi_J = LJ / L_cavity
 """roughly 100"""
-Phi_ext_Phi0 = 2 * np.pi * 0.25  # np.linspace(0, 0.5, 100)
+Phi_ext_Phi0 = 0.25  # np.linspace(0, 0.5, 100)
 
 # HFSS and pyEPR sim results
 fd_Hz, fb_Hz, fc_Hz = 5.92639e9, 6.29573e9, 12.0198e9
