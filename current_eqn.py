@@ -33,7 +33,7 @@ def residueI_eqnA5(phis_rad, phi_rad, alpha=alpha, Phi_ext_Phi0=Phi_ext_Phi0):
     capacitance is against them (phi)
     phiL = - M phis - phi
     """
-    print('eval')
+    # print('eval')
     return curr_snail(phis_rad, alpha, Phi_ext_Phi0) - curr_inductor(phis_rad, phi_rad)  # should be zero
 
 
@@ -50,17 +50,25 @@ def fun_phis_of_phi(phi_rad, alpha=alpha, Phi_ext_Phi0=Phi_ext_Phi0):
 
 
 if __name__ == '__main__':
+    pl.figure(1)
+    phi_all = np.linspace(-60. * np.pi, 60. * np.pi, 501)
+    pl.plot(phi_all, [fun_phis_of_phi(x) for x in phi_all])
+    # pl.show()
+
+    pl.figure(2)
     phis_all = np.linspace(-2. * np.pi, 2. * np.pi, 201)
     pl.plot(phis_all, curr_snail(phis_all))
-    pl.plot(phis_all, curr_inductor(phis_all, -0.01), label=-0.01)
-    pl.plot(phis_all, curr_inductor(phis_all, 0.0), label=0.)
-    pl.plot(phis_all, curr_inductor(phis_all, 0.01), label=0.01)
-    pl.plot(phis_all, curr_inductor(phis_all, 0.02), label=0.02)
-    pl.plot(phis_all, curr_inductor(phis_all, 2 * np.pi), label=2 * np.pi)
-    pl.title([fun_phis_of_phi(x) for x in [-.01, 0, .01, .02, 2 * np.pi]])
+
+    phi_all = np.linspace(-40. * np.pi, 40. * np.pi, 6)
+    for x in phi_all:
+        pl.plot(phis_all, curr_inductor(phis_all, x), label=x)
+    pl.title([fun_phis_of_phi(x) for x in phi_all])
     pl.xlabel('phis')
     pl.ylim([-1, 1])
     pl.legend()
+
+    pl.figure(1)
+    pl.plot(phi_all, [fun_phis_of_phi(x) for x in phi_all], 'o')
     pl.show()
 
     if 0:

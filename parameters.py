@@ -2,9 +2,10 @@
 # SNAIL
 from constants import *
 
-M, alpha, ns = 31, 0.102, 3
+M, alpha, ns = 10, 0.102, 3
 LJ = 16.86e-9
-EJ_Hz = phi0 ** 2 / LJ
+EJ_Hz = hbar / (8 * np.pi * q_electron ** 2 * LJ)
+EJ_GHz = EJ_Hz * 1e-9
 EJ = h * EJ_Hz
 # Cavity
 w_cavity = 2 * np.pi * 13e9
